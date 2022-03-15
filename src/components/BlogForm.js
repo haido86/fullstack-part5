@@ -1,32 +1,32 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
 const BlogForm = ({ createBlog }) => {
-  const [newTitle, setNewTitle] = useState("");
-  const [newAuthor, setNewAuthor] = useState("");
-  const [newUrl, setNewUrl] = useState("");
+  const [newTitle, setNewTitle] = useState('')
+  const [newAuthor, setNewAuthor] = useState('')
+  const [newUrl, setNewUrl] = useState('')
 
   const handleTitleChange = (event) => {
-    setNewTitle(event.target.value);
-  };
+    setNewTitle(event.target.value)
+  }
   const handleAuthorChange = (event) => {
-    setNewAuthor(event.target.value);
-  };
+    setNewAuthor(event.target.value)
+  }
   const handleUrlChange = (event) => {
-    setNewUrl(event.target.value);
-  };
+    setNewUrl(event.target.value)
+  }
 
   const addBlog = (event) => {
-    event.preventDefault();
+    event.preventDefault()
     createBlog({
       title: newTitle,
       author: newAuthor,
       url: newUrl,
-    });
+    })
 
-    setNewTitle("");
-    setNewAuthor("");
-    setNewUrl("");
-  };
+    setNewTitle('')
+    setNewAuthor('')
+    setNewUrl('')
+  }
 
   return (
     <div>
@@ -44,11 +44,11 @@ const BlogForm = ({ createBlog }) => {
           </p>
         </div>
         <div>
-          <button type="submit">Create</button>
+          <button type='submit'>Create</button>
         </div>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default BlogForm;
+export default BlogForm

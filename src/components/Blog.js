@@ -1,32 +1,32 @@
-import React, { useState } from "react";
-import blogService from "../services/blogs";
+import React, { useState } from 'react'
+import blogService from '../services/blogs'
 
 const Blog = ({ blog, handleRefresh, user }) => {
-  const [blogVisible, setBlogVisible] = useState(false);
+  const [blogVisible, setBlogVisible] = useState(false)
 
   const blogStyle = {
     paddingTop: 10,
     paddingLeft: 2,
-    border: "solid",
+    border: 'solid',
     borderWidth: 1,
     marginBottom: 5,
-  };
+  }
 
-  const hideWhenVisible = { display: blogVisible ? "none" : "" };
-  const showWhenVisible = { display: blogVisible ? "" : "none" };
+  const hideWhenVisible = { display: blogVisible ? 'none' : '' }
+  const showWhenVisible = { display: blogVisible ? '' : 'none' }
 
   const handleLikesBlog = async () => {
-    await blogService.update(blog.id, { likes: +blog.likes + 1 });
+    await blogService.update(blog.id, { likes: +blog.likes + 1 })
 
-    handleRefresh();
-  };
+    handleRefresh()
+  }
 
   const handleRemoveBlog = async () => {
     if (window.confirm(`Remove blog ${blog.title} by ${blog.author} `)) {
-      await blogService.eliminate(blog.id);
-      handleRefresh();
+      await blogService.eliminate(blog.id)
+      handleRefresh()
     }
-  };
+  }
 
   return (
     <div style={blogStyle}>
@@ -49,7 +49,7 @@ const Blog = ({ blog, handleRefresh, user }) => {
         </div>
         <p>
           <button
-            style={{ backgroundColor: "lightblue" }}
+            style={{ backgroundColor: 'lightblue' }}
             onClick={handleRemoveBlog}
             disabled={user.username !== blog.user.username}
           >
@@ -58,7 +58,7 @@ const Blog = ({ blog, handleRefresh, user }) => {
         </p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Blog;
+export default Blog
