@@ -92,6 +92,19 @@ const App = () => {
     setRefresh(!refresh)
   }
 
+  const handleLikesBlog = async (blog) => {
+    await blogService.update(blog.id, { likes: +blog.likes + 1 })
+
+    handleRefresh()
+  }
+
+  const handleRemoveBlog = async (blog) => {
+    if (window.confirm(`Remove blog ${blog.title} by ${blog.author} `)) {
+      await blogService.eliminate(blog.id)
+      handleRefresh()
+    }
+  }
+
   if (user === null) {
     return (
       <div>
@@ -132,8 +145,10 @@ const App = () => {
           <Blog
             key={blog.id}
             blog={blog}
-            handleRefresh={handleRefresh}
             user={user}
+            handleRefresh={handleRefresh}
+            handleLikesBlog={handleLikesBlog}
+            handleRemoveBlog={handleRemoveBlog}
           />
         ))}
       </div>
