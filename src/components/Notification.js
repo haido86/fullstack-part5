@@ -1,22 +1,23 @@
 const Notification = ({ message }) => {
   if (message === null) {
-    return null;
+    return null
   }
 
   return (
     <div
-      className="error"
-      // style={
-      //   message.includes("remove") ||
-      //   message.includes("failed") ||
-      //   message.includes("replace")
-      //     ? { color: "red" }
-      //     : {}
-      // }
+      className='error'
+      style={
+        message.includes('remove') ||
+        message.includes('failed') ||
+        message.includes('replace') ||
+        message.includes('Wrong')
+          ? { color: 'red' }
+          : {}
+      }
     >
       {message}
     </div>
-  );
-};
+  )
+}
 
-export default Notification;
+export default Notification

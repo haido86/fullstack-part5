@@ -15,29 +15,32 @@ const Blog = ({ blog, user, handleLikesBlog, handleRemoveBlog }) => {
   const showWhenVisible = { display: blogVisible ? '' : 'none' }
 
   return (
-    <div style={blogStyle}>
+    <div className='wrapper' style={blogStyle}>
       <div style={hideWhenVisible}>
         <div>
-          {blog.title}
-          <button onClick={() => setBlogVisible(true)}>View</button>
+          <span>{blog.title}</span>
+          <button id='view-button' onClick={() => setBlogVisible(true)}>
+            View
+          </button>
         </div>
       </div>
       <div style={showWhenVisible}>
         <div>
-          {blog.title}
+          <span>{blog.title}</span>
           <button onClick={() => setBlogVisible(false)}>Hide</button>
         </div>
         <div>{blog.author}</div>
         <div>{blog.url}</div>
         <div>
-          likes {blog.likes}
-          <button data-testid={blog.id} onClick={() => handleLikesBlog(blog)}>
+          likes <span id='like'>{blog.likes}</span>
+          <button id='like-button' onClick={() => handleLikesBlog(blog)}>
             like
           </button>
         </div>
         <p>
           <button
             style={{ backgroundColor: 'lightblue' }}
+            id='remove-button'
             onClick={() => handleRemoveBlog(blog)}
             disabled={user.username !== blog.user.username}
           >
